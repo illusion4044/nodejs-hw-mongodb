@@ -56,4 +56,8 @@ export const startServer = ()=>{
     app.listen(port, ()=> console.log("Server running on port 3000"));
 };
 
+<<<<<<< Updated upstream
 // changes
+=======
+//change
+>>>>>>> Stashed changes
