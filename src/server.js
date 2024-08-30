@@ -3,6 +3,8 @@ import cors from "cors";
 
 import { env } from "./utils/env.js";
 
+import * as contactServices from "./services/contacts.js";
+
 export const startServer = ()=>{
     const app = express();
 
@@ -14,24 +16,24 @@ export const startServer = ()=>{
  
          res.json({
              status: 200,
-             message: "Successfully found movies",
+             message: "Successfully found contacts!",
              data,
          });
      });
  
-     app.get("/contacts/:id", async(req, res)=> {
-         const {id} = req.params;
-         const data = await contactServices.getContactById(id);
+     app.get("/contacts/:ContactId", async(req, res)=> {
+         const {ContactId} = req.params;
+         const data = await contactServices.getContactById(ContactId);
  
          if(!data) {
              return res.status(404).json({
-                 message: `Contact with id=${id} not found`
+                 message: `Contact with id=${ContactId} not found`
              });
          }
  
          res.json({
              status: 200,
-             message: `Contact with ${id} successfully find`,
+             message: `Contact with ${ContactId} successfully find`,
              data,
          });
      });
@@ -42,7 +44,7 @@ export const startServer = ()=>{
          });
      });
  
-     app.use((error, req, res, next)=> {
+     app.use((error, req, res)=> {
          res.status(500).json({
              message: error.message,
          });

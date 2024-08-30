@@ -1,10 +1,9 @@
-import express from "express";
-import cors from "cors";
+import { startServer } from "./server.js";
+import { initMongoConnection } from "./db/initMongoConnection.js";
 
-export const startServer = ()=>{
-    const app = express();
+const bootstrap = async()=> {
+    await initMongoConnection();
+    startServer();
+};
 
-    app.use(cors());
-    app.use(express.json());
-}
-
+bootstrap();
