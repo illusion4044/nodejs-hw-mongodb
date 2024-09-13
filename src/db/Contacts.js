@@ -1,5 +1,9 @@
 import {Schema, model} from "mongoose";
 
+import { contactList, createdAtRegexp} from "../../constants/contacts.js";
+
+import { handleSaveError, setUpdateOptions } from "./hooks.js";
+
 const contactSchema = new Schema({
 
     name: {
@@ -19,17 +23,28 @@ const contactSchema = new Schema({
         type: String,
         enum: ["personal", "home"],
         required: true,
-    }
-    // createdAt:{
-    //     type: String,
-    //     required: true,
-    // },
+    },
+    createdAt:{
+        type: String,
+        match: createdAtRegexp,
+        required: true,
+    },
     // updatedAt:{
     //     type: String,
     //     required: true,
     // }
 }, {versionKey: false, timestamps: true});
 
-const ContactCollection = model("contact", contactSchema);
+contactSchema.post("save", handleSaveError);
+
+contactSchema.pre("findOneAndUpdate", setUpdateOptions);
+
+contactSchema.post("findOneAndUpdate", handleSaveError);
+
+const ContactCollection = model("movie", contactSchema);
+
+export const sortFields = ["title", "director", "genre", "favorite", "releaseYear", "createdAt", "updatedAt"];
+
+// const ContactCollection = model("contact", contactSchema);
 
 export default ContactCollection;
