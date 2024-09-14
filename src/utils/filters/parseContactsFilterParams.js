@@ -2,13 +2,11 @@ import { parseContactType, parseIsFavourite } from "./parseNumber.js";
 
 export const parseTypeFilterParams = ({ type }) => {
 	const isType = parseContactType(type);
-	// console.log(isType);
 	return isType;
 };
 
 export const parseIsFavouriteParams = (value) => {
 	const isFavourite = parseIsFavourite(value);
-	// console.log(isFavourite);
 	return isFavourite;
 };
 
