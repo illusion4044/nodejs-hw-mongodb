@@ -11,6 +11,10 @@ const authRouter = Router();
 
 authRouter.post("/register", validateBody(userSignupSchema), ctrlWrapper(authControllers.signupController));
 
-authRouter.post("/signin", validateBody(userSigninSchema), ctrlWrapper(authControllers.signinController));
+authRouter.post("/login", validateBody(userSigninSchema), ctrlWrapper(authControllers.signinController));
+
+authRouter.post("/refresh", ctrlWrapper(authControllers.refreshController));
+
+authRouter.post("/logout", ctrlWrapper(authControllers.signoutController));
 
 export default authRouter;
