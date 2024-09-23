@@ -3,7 +3,7 @@ import ContactCollection from "../db/Contacts.js";
 import calculatePaginationData from '../utils/calculatePaginationData.js';
 import { SORT_ORDER } from '../constants/index.js';
 
-export const getMovies = async ({
+export const getContacts = async ({
     perPage,
     page, 
     sortBy = "_id", 
@@ -38,11 +38,11 @@ export const getMovies = async ({
     };
 };
 
-export const getMovie = filter => ContactCollection.findById(filter);
+export const getContact = filter => ContactCollection.findById(filter);
 
-export const createMovie = payload => ContactCollection.create(payload);
+export const createContact = payload => ContactCollection.create(payload);
 
-export const updateMovie = async(filter, data, options = {})=> {
+export const updateContact = async(filter, data, options = {})=> {
     const rawResult = await ContactCollection.findOneAndUpdate(filter, data, {
         includeResultMetadata: true,
         ...options,

@@ -10,7 +10,7 @@ export const getAllContactsController = async (req, res) => {
   const { sortBy, sortOrder } = parseSortParams({ ...req.query, sortFields });
   const filter = parseContactsFilterParams(req.query);
   const {_id: userId} = req.user;
-    const data = await contactServices.getAllContacts({
+    const data = await contactServices.getContacts({
       perPage,
     page,
     sortBy,
@@ -28,7 +28,7 @@ export const getAllContactsController = async (req, res) => {
 export const getContactByIdController = async (req, res) => {
   const { id } = req.params;
   const {_id: userId} = req.user;
-  const data = await contactServices.getContactById({_id: id, userId});
+  const data = await contactServices.getContact({_id: id, userId});
 
   if (!data) {
     throw createHttpError(404, `Contact with id=${id} not found`);
@@ -82,7 +82,7 @@ export const patchContactController = async(req, res)=> {
 
 export const deleteContactController = async(req, res)=> {
   const {id} = req.params;
-  const data = await contactServices.deleteContact({_id: id});
+  const data = await contactServices.deleteMovie({_id: id});
 
   if (!data) {
     throw createHttpError(404, `Contact with id=${id} not found`);
