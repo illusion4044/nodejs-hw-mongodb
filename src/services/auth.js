@@ -36,7 +36,7 @@ export const register = async (payload)=> {
     return data._doc;
 };
 
-export const lognin = async(payload)=> {
+export const login = async(payload)=> {
     const {email, password} = payload;
     const user = await UserCollection.findOne({email});
     if(!user) {
