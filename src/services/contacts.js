@@ -56,4 +56,4 @@ export const updateContact = async(filter, data, options = {})=> {
     };
 };
 
-export const deleteMovie = filter => ContactCollection.findOneAndDelete(filter);
+export const deleteContact = filter => ContactCollection.findOneAndDelete(filter);
