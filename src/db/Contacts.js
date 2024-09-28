@@ -30,6 +30,14 @@ const contactSchema = new Schema({
 		required: true,
 		default: 'personal',
     },
+    poster: {
+        type: String,
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        required: true,
+    }
     // createdAt:{
     //     type: String,
     //     match: createdAtRegexp,
