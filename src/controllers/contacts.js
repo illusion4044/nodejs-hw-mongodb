@@ -3,7 +3,12 @@ import parsePaginationParams from '../utils/parsePaginationParams.js';
 import parseSortParams from '../utils/parseSortParams.js';
 import * as contactServices from '../services/contacts.js';
 import {parseContactsFilterParams} from '../utils/filters/parseContactsFilterParams.js';
+import saveFileToUploadDir from '../utils/saveFileToUploadDir.js';
+import saveFileToCloudinary from '../utils/saveFileToCloudinary.js';
+import { env } from '../utils/env.js';
 import { sortFields } from '../db/Contacts.js';
+
+const enableCloudinary = env("ENABLE_CLOUDINARY");
 
 export const getAllContactsController = async (req, res) => {
   const { perPage, page } = parsePaginationParams(req.query);
@@ -41,13 +46,29 @@ export const getContactByIdController = async (req, res) => {
   });
 };
 
+export const addMovieController = async (req, res) => {
+  let poster;
+  if(req.file) {
+    if(enableCloudinary === "true") {
+      poster = await saveFileToCloudinary(req.file, "posters");
+    }
+    else {
+      poster = await saveFileToUploadDir(req.file);
+    }
+  }
+
+  const {_id: userId} = req.user;
+  const data = await contactServices.createMovie({...req.body, userId, poster});
+
+
 export const addContactController = async(req, res)=> {
   const {_id: userId} = req.user;
   const data = await contactServices.createContact({...req.body, userId});
   
+
   res.status(201).json({
     status: 201,
-    message: "Contact add successfully",
+    message: 'Movie add successfully',
     data,
   });
 };
