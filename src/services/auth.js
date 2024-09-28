@@ -40,7 +40,6 @@ const createSession = ()=> {
 
 const appDomain = env("APP_DOMAIN");
 
-export const signup = async (payload)=> {
 
 export const register = async (payload)=> {
 
@@ -88,7 +87,6 @@ export const verify = async token => {
     await UserCollection.findOneAndUpdate({_id: user._id}, {verify: true});
 };
 
-export const signin = async(payload)=> {
 
 export const login = async(payload)=> {
 
