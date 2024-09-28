@@ -46,7 +46,8 @@ export const getContactByIdController = async (req, res) => {
   });
 };
 
-export const addMovieController = async (req, res) => {
+
+export const addContactController = async(req, res)=> {
   let poster;
   if(req.file) {
     if(enableCloudinary === "true") {
@@ -58,13 +59,7 @@ export const addMovieController = async (req, res) => {
   }
 
   const {_id: userId} = req.user;
-  const data = await contactServices.createMovie({...req.body, userId, poster});
-
-
-export const addContactController = async(req, res)=> {
-  const {_id: userId} = req.user;
-  const data = await contactServices.createContact({...req.body, userId});
-  
+  const data = await contactServices.createContact({...req.body, userId, poster});
 
   res.status(201).json({
     status: 201,
