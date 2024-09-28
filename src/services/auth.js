@@ -14,11 +14,14 @@ import { createJwtToken, verifyToken } from "../utils/jwt.js";
 
 import { accessTokenLifetime, refreshTokenLifetime } from "../constants/users.js";
 
+
 import {TEMPLATES_DIR} from "../constants/index.js";
 
 const verifyEmailTemplatePath = path.join(TEMPLATES_DIR, "verify-email.html");
 
 const verifyEmailTemplateSource = await fs.readFile(verifyEmailTemplatePath, "utf-8");
+
+
 
 const createSession = ()=> {
     const accessToken = randomBytes(30).toString("base64");
@@ -34,9 +37,13 @@ const createSession = ()=> {
     };
 };
 
+
 const appDomain = env("APP_DOMAIN");
 
 export const signup = async (payload)=> {
+
+export const register = async (payload)=> {
+
     const {email, password} = payload;
     const user = await UserCollection.findOne({email});
     if(user) {
@@ -66,6 +73,7 @@ export const signup = async (payload)=> {
     return data._doc;
 };
 
+
 export const verify = async token => {
     const {data, error} = verifyToken(token);
     if(error) {
@@ -81,6 +89,9 @@ export const verify = async token => {
 };
 
 export const signin = async(payload)=> {
+
+export const login = async(payload)=> {
+
     const {email, password} = payload;
     const user = await UserCollection.findOne({email});
     if(!user) {
