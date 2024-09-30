@@ -5,7 +5,7 @@ import validateBody from "../utils/validateBody.js";
 import { resetPasswordSchema } from '../validation/users.js';
 import { resetPasswordController } from '../controllers/auth.js';
 
-import {userSignupSchema, userSigninSchema} from "../validation/users.js";
+import {userSignupSchema, userSigninSchema, requestResetEmailSchema} from "../validation/users.js";
 
 const authRouter = Router();
 
