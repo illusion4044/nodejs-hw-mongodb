@@ -11,19 +11,19 @@ export const getContacts = async ({
     filter = {},
 })=> {
     const skip = (page - 1) * perPage;
-    const movieQuery = ContactCollection.find(); 
+    const contactQuery = ContactCollection.find(); 
     
     if(filter.minReleaseYear) {
-        movieQuery.where("releaseYear").gte(filter.minReleaseYear);
+        contactQuery.where("releaseYear").gte(filter.minReleaseYear);
     }
     if(filter.maxReleaseYear) {
-        movieQuery.where("releaseYear").lte(filter.maxReleaseYear);
+        contactQuery.where("releaseYear").lte(filter.maxReleaseYear);
     }
     if(filter.userId) {
-        movieQuery.where("userId").eq(filter.userId);
+        contactQuery.where("userId").eq(filter.userId);
     }
 
-    const movies = await movieQuery.skip(skip).limit(perPage).sort({[sortBy]: sortOrder});
+    const movies = await contactQuery.skip(skip).limit(perPage).sort({[sortBy]: sortOrder});
     
     const count = await ContactCollection.find().merge(movieQuery).countDocuments();
 
