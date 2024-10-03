@@ -4,7 +4,7 @@ import {randomBytes} from "crypto";
 import * as path from "node:path";
 import * as fs from "node:fs/promises";
 import handlebars from "handlebars";
-
+import jwt from 'jsonwebtoken'; 
 import SessionCollection from "../db/Session.js";
 import UserCollection from "../db/User.js";
 import { SMTP, TEMPLATES_DIR } from '../constants/index.js';
