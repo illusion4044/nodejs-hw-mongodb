@@ -14,7 +14,7 @@ authRouter.post("/register", validateBody(userSignupSchema), ctrlWrapper(authCon
 
 authRouter.get("/verify", ctrlWrapper(authControllers.verifyController));
 
-authRouter.post("/login", validateBody(userSigninSchema), ctrlWrapper(authControllers.signinController));
+authRouter.post("/login", validateBody(userSigninSchema), ctrlWrapper(authControllers.loginController));
 
 authRouter.post("/refresh", ctrlWrapper(authControllers.refreshController));
 
