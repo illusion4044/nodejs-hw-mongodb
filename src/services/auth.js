@@ -149,6 +149,7 @@ export const logout = async (sessionId)=> {
 };
 
 export const findUser = filter => UserCollection.findOne(filter);
+
 export const requestResetToken = async (email) => {
 	const user = await UserCollection.findOne({ email });
 	if (!user) {

@@ -25,7 +25,7 @@ export const getContacts = async ({
 
     const movies = await contactQuery.skip(skip).limit(perPage).sort({[sortBy]: sortOrder});
     
-    const count = await ContactCollection.find().merge(movieQuery).countDocuments();
+    const count = await ContactCollection.find().merge(contactQuery).countDocuments();
 
     const paginationData = calculatePaginationData({count, perPage, page});
 
