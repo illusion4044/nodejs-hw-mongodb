@@ -26,16 +26,16 @@ export const registerController = async(req, res)=> {
 };
 
 
-export const verifyController = async(req, res)=> {
-    const {token} = req.query;
-    await authServices.verify(token);
+// export const verifyController = async(req, res)=> {
+//     const {token} = req.query;
+//     await authServices.verify(token);
 
-    res.json({
-        status: 200,
-        message: "Email verified successfully",
-        data: {},
-    });
-};
+//     res.json({
+//         status: 200,
+//         message: "Email verified successfully",
+//         data: {},
+//     });
+// };
 
 // export const signinController = async(req, res)=> {
 //     const session = await authServices.signin(req.body);

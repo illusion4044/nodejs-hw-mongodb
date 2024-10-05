@@ -12,7 +12,7 @@ const authRouter = Router();
 authRouter.post("/register", validateBody(userSignupSchema), ctrlWrapper(authControllers.registerController));
 
 
-authRouter.get("/verify", ctrlWrapper(authControllers.verifyController));
+// authRouter.get("/verify", ctrlWrapper(authControllers.verifyController));
 
 authRouter.post("/login", validateBody(userSigninSchema), ctrlWrapper(authControllers.loginController));
 

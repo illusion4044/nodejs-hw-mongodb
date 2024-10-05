@@ -9,7 +9,7 @@ import SessionCollection from "../db/Session.js";
 import UserCollection from "../db/User.js";
 import { SMTP, TEMPLATES_DIR } from '../constants/index.js';
 import {env} from "../utils/env.js";
-import { createJwtToken, verifyToken } from "../utils/jwt.js";
+// import { createJwtToken, verifyToken } from "../utils/jwt.js";
 import {sendEmail} from "../utils/sendEmail.js";
 import { accessTokenLifetime, refreshTokenLifetime } from "../constants/users.js";
 import "dotenv/config";
@@ -17,9 +17,9 @@ import "dotenv/config";
 
 
 
-const verifyEmailTemplatePath = path.join(TEMPLATES_DIR, "verify-email.html");
+// const verifyEmailTemplatePath = path.join(TEMPLATES_DIR, "verify-email.html");
 
-const verifyEmailTemplateSource = await fs.readFile(verifyEmailTemplatePath, "utf-8");
+// const verifyEmailTemplateSource = await fs.readFile(verifyEmailTemplatePath, "utf-8");
 
 
 
@@ -38,7 +38,7 @@ const createSession = ()=> {
 };
 
 
-const appDomain = env("APP_DOMAIN");
+// const appDomain = env("APP_DOMAIN");
 
 
 export const register = async (payload)=> {
@@ -54,38 +54,39 @@ export const register = async (payload)=> {
     const data = await UserCollection.create({...payload, password: hashPassword});
     delete data._doc.password;
     
-    const jwtToken = createJwtToken({email});
-    const template = handlebars.compile(verifyEmailTemplateSource);
-    const html = template({
-        appDomain,
-        jwtToken,
-    });
-
-    const verifyEmail = {
-        to: email,
-        subject: "Verify email",
-        html,
+    // const jwtToken = createJwtToken({email});
+    // const template = handlebars.compile(verifyEmailTemplateSource);
+    // const html = template({
+    //     appDomain,
+    //     jwtToken,
+    return data._doc;
     };
 
-    await sendEmail(verifyEmail);
+//     const verifyEmail = {
+//         to: email,
+//         subject: "Verify email",
+//         html,
+//     };
 
-    return data._doc;
-};
+//     await sendEmail(verifyEmail);
+
+//     return data._doc;
+// };
 
 
-export const verify = async token => {
-    const {data, error} = verifyToken(token);
-    if(error) {
-        throw createHttpError(401, "Token invalid");
-    }
+// export const verify = async token => {
+//     const {data, error} = verifyToken(token);
+//     if(error) {
+//         throw createHttpError(401, "Token invalid");
+//     }
     
-    const user = await UserCollection.findOne({email: data.email});
-    if(user.verify) {
-        throw createHttpError(401, "Email already verify");
-    }
+//     const user = await UserCollection.findOne({email: data.email});
+//     if(user.verify) {
+//         throw createHttpError(401, "Email already verify");
+//     }
     
-    await UserCollection.findOneAndUpdate({_id: user._id}, {verify: true});
-};
+//     await UserCollection.findOneAndUpdate({_id: user._id}, {verify: true});
+// };
 
 
 export const login = async(payload)=> {
@@ -95,9 +96,9 @@ export const login = async(payload)=> {
     if(!user) {
         throw createHttpError(401, "Email or password invalid");
     }
-    if(!user.verify) {
-        throw createHttpError(401, "Email not verify");
-    }
+    // if(!user.verify) {
+    //     throw createHttpError(401, "Email not verify");
+    // }
 
     const passwordCompare = await bcrypt.compare(password, user.password);
     if(!passwordCompare) {
