@@ -17,11 +17,11 @@ contactsRouter.get("/:id", isValidId, ctrlWrapper(contactControllers.getContactB
 
 // contactsRouter.post("/", ctrlWrapper(contactControllers.addContactController));
 
-contactsRouter.post("/", upload.single("poster"), validateBody(contactAddSchema), ctrlWrapper(contactControllers.addContactController));
+contactsRouter.post("/", upload.single("photo"), validateBody(contactAddSchema), ctrlWrapper(contactControllers.addContactController));
 
 contactsRouter.put("/:id", isValidId,  validateBody(contactAddSchema),  ctrlWrapper(contactControllers.upsertContactController));
 
-contactsRouter.patch("/:id", upload.single("poster"), isValidId, validateBody(contactPatchSchema), ctrlWrapper(contactControllers.patchContactController));
+contactsRouter.patch("/:id", upload.single("photo"), isValidId, validateBody(contactPatchSchema), ctrlWrapper(contactControllers.patchContactController));
 // contactsRouter.patch("/:id", isValidId, validateBody(contactPatchSchema),ctrlWrapper(contactControllers.patchContactController));
 
 contactsRouter.delete("/:id", isValidId,ctrlWrapper(contactControllers.deleteContactController));
