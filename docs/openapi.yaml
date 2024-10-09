@@ -18,17 +18,17 @@ servers:
 paths:
   /contacts/{contactId}:
     get: 
-      $ref: ./swagger/paths/{id}/get.yaml
+      $ref: ../swagger/path/{id}/get.yaml
     delete:
-    $ref: ./swagger/paths/{id}/delete.yaml
+    $ref: ../swagger/path/{id}/delete.yaml
     patch:
-      $ref: ./swagger/paths/{id}/patch.yaml
+      $ref: ../swagger/path/{id}/patch.yaml
 
   /contacts:
     post:
-      $ref: ../swagger/paths/post.yaml
+      $ref: ../swagger/path/post.yaml
     get:
-      $ref: ../swagger/paths/get.yaml
+      $ref: ../swagger/path/get.yaml
             
 
 components:
