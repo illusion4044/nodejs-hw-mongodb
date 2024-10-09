@@ -6,6 +6,12 @@ description: 'Get list of contacts'
 security:
   - bearerAuth: []
 parameters:
+  - in: path
+    name: contactId
+    required: true
+    schema:
+      type: string
+    description: 'ID of the contact'
   - in: query
     name: page
     schema:
@@ -62,7 +68,7 @@ responses:
                 - hasNextPage
                 - hasPreviousPage
               properties:
-                data:
+                contacts:
                   type: array
                   items:
                     $ref: '../../components/schemas/contact.yaml'
