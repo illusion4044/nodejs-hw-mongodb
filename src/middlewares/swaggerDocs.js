@@ -14,5 +14,5 @@ export const swaggerDocs = () => {
   }
 };
 
-// Create a middleware chain for Swagger
+
 export const swaggerMiddleware = [swaggerUI.serve, swaggerDocs];

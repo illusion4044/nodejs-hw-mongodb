@@ -1,8 +1,8 @@
 tags:
-  - Contacts
-summary: Create contact
-operationId: createContact
-description: 'Create a contact with payload'
+  - Students
+summary: Create student
+operationId: createStudent
+description: 'Create a student with payload'
 security:
   - bearerAuth: []
 requestBody:
@@ -12,41 +12,42 @@ requestBody:
         type: object
         required:
           - name
-          - phoneNumber
-          - contactType
+          - age
+          - gender
+          - avgMark
+          - parentId
         properties:
           name:
-            description: "Contact's name"
+            description: "Student's name"
             type: string
             example: 'John Doe'
-          phoneNumber:
-            description: "Contact's phone number"
+          age:
+            description: "Student's age"
+            type: number
+            example: 12
+          gender:
+            description: "Student's age"
             type: string
-            example: 324-84-15
-          email:
-            description: "Contact's email"
-            type: string
-            example: rudolf@mail.com
-          isFavorite:
-            description: 'Favorite contact'
+            enum: ['male', 'female', 'other']
+          avgMark:
+            description: "Student's average mark. Should be between 1 and 12"
+            type: number
+            example: 9.7
+          onDuty:
+            description: 'Whether is student on duty'
             type: boolean
-            example: true
-          contactType:
-            description: 'Which group contact belongs to'
+            example: false
+          parentId:
+            description: "Student's parent id"
             type: string
-            enum: ['work', 'home', 'personal']
-            example: 'work'
-          userId:
-            description: "Contact's parent id"
-            type: string
-            example: 66fe6d0b5b7ffb5c70dfd498
+            example: 65e4decdd286b30065d54af9
           photo:
-            description: "Link to contact's photo"
+            description: "Student's photo"
             type: string
             format: binary
 responses:
   '201':
-    description: Creates a contact
+    description: Creates a student
     content:
       application/json:
         schema:
@@ -61,9 +62,9 @@ responses:
               example: 201
             message:
               type: string
-              example: Successfully created a contact!
+              example: Successfully created a student!
             data:
               type: object
-              $ref: '../../components/schemas/contact.yaml'
+              $ref: '../../components/schemas/student.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'
