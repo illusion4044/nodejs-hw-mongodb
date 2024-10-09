@@ -21,7 +21,7 @@ requestBody:
           _id:
             description: "Contact's id"
             type: string
-            example: 66f95602862f79450d733026
+            example: 65e4decdd286b30065d54af9
           name:
             description: "Contact's name"
             type: string
@@ -33,7 +33,7 @@ requestBody:
           email:
             description: "Contact's email"
             type: string
-            example: rudolf@mail.com
+            example: buhaichuk@mail.com
           isFavorite:
             description: 'Favorite contact'
             type: boolean
@@ -41,12 +41,12 @@ requestBody:
           contactType:
             description: 'Which group contact belongs to'
             type: string
-            enum: ['work', 'home', 'personal']
+            enum: ['work', 'personal']
             example: 'work'
           userId:
             description: "Contact's parent id"
             type: string
-            example: 66fe6d0b5b7ffb5c70dfd498
+            example: 65e4decdd286b30065d54af9
           photo:
             description: "Link to contact's photo"
             type: string
