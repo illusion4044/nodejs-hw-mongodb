@@ -1,15 +1,14 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
 import { env } from "./utils/env.js";
-
 import notFoundHandler from "./middlewares/notFoundHandler.js";
 import errorHandler from "./middlewares/errorHandler.js";
 // import logger from "../src/middlewares/loger.js";
-
 import authRouter from "./routers/auth.js";
 import contactsRouter from "./routers/contacts.js";
+import { UPLOAD_DIR } from './src/constants/index.js';
+import { swaggerDocs } from './src/middlewares/swaggerDocs.js'; // Updated import
 
 export const startServer = ()=> {
     const app = express();
@@ -19,12 +18,16 @@ export const startServer = ()=> {
     app.use(express.json());
     app.use(cookieParser());
 
+    app.use('/api-docs', swaggerDocs); // Updated to use swaggerMiddleware
+
     app.use("/auth", authRouter);
     app.use("/contacts", contactsRouter);
 
     app.use(notFoundHandler);
 
     app.use(errorHandler);
+
+    app.use('/uploads', express.static(UPLOAD_DIR));
 
     const port = Number(env("PORT", 3000));
 
