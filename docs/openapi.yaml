@@ -20,7 +20,7 @@ paths:
     get: 
       $ref: ../swagger/path/{id}/get.yaml
     delete:
-    $ref: ../swagger/path/{id}/delete.yaml
+      $ref: ../swagger/path/{id}/delete.yaml
     patch:
       $ref: ../swagger/path/{id}/patch.yaml
 
