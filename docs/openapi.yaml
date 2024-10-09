@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: <назва вашого додатку>
+  title: Contacts Book
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -14,8 +14,22 @@ tags:
     description: Auth operations.
 servers:
   - url: http://localhost:3000
-    url: https://contacts-app-s1ab.onrender.co
+  - url: https://example.com/api/v1
 paths:
+  /contacts/{contactId}:
+    get: 
+      $ref: ./swagger/paths/{id}/get.yaml
+    delete:
+    $ref: ./swagger/paths/{id}/delete.yaml
+    patch:
+      $ref: ./swagger/paths/{id}/patch.yaml
+
+  /contacts:
+    post:
+      $ref: ../swagger/paths/post.yaml
+    get:
+      $ref: ../swagger/paths/get.yaml
+            
 
 components:
   securitySchemes:
