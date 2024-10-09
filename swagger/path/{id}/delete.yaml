@@ -26,7 +26,7 @@ responses:
               type: integer
               example: 204
   '401':
-    $ref: '../../../components/responses/401.yaml'
+    $ref: ..\..\components\responses\401.yaml
   '404':
     description: 'Contact not found'
     content:
