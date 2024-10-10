@@ -3,7 +3,7 @@ import swaggerUI from 'swagger-ui-express';
 import fs from 'node:fs';
 import { SWAGGER_PATH } from '../constants/index.js';
 
-export const swaggerDocs = (req, res, next) => {
+export const swaggerDocuments = (req, res, next) => {
   try {
     const swaggerDoc = JSON.parse(fs.readFileSync(SWAGGER_PATH).toString());
     swaggerUI.setup(swaggerDoc)(req, res, next);
@@ -12,4 +12,4 @@ export const swaggerDocs = (req, res, next) => {
   }
 };
 
-export const swaggerMiddleware = [swaggerUI.serve, swaggerDocs];
+export const swaggerDocs = [swaggerUI.serve, swaggerDocuments];
