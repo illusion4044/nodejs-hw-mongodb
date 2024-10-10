@@ -45,7 +45,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "66fe6dcb5b7ffb5c70dfd4a0"
+              "example": "66d1a08277df1f701522be34"
             }
           }
         ],
@@ -68,7 +68,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully found student with id 65ca67e7ae7f10c88b598384!"
+                      "example": "Successfully found contact with id 66d1a08277df1f701522be34!"
                     },
                     "data": {
                       "type": "object",
@@ -103,7 +103,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "66fe6dcb5b7ffb5c70dfd4a0"
+              "example": "66e548724022740bbde74597"
             }
           }
         ],
@@ -171,7 +171,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "66fe6dcb5b7ffb5c70dfd4a0"
+              "example": "66d1a08277df1f701522be35"
             }
           }
         ],
@@ -184,7 +184,7 @@
                   "_id": {
                     "description": "Contact's id",
                     "type": "string",
-                    "example": "66f95602862f79450d733026"
+                    "example": "66d1a08277df1f701522be38"
                   },
                   "name": {
                     "description": "Contact's name",
@@ -199,7 +199,7 @@
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
-                    "example": "rudolf@mail.com"
+                    "example": "buhaichuk@mail.com"
                   },
                   "isFavorite": {
                     "description": "Favorite contact",
@@ -219,7 +219,7 @@
                   "userId": {
                     "description": "Contact's parent id",
                     "type": "string",
-                    "example": "66fe6d0b5b7ffb5c70dfd498"
+                    "example": "66e44f1689959db712a689b6"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
@@ -548,7 +548,7 @@
           "_id": {
             "description": "Contact's id",
             "type": "string",
-            "example": "66f95602862f79450d733026"
+            "example": "66d1a08277df1f701522be3a"
           },
           "name": {
             "description": "Contact's name",
@@ -563,7 +563,7 @@
           "email": {
             "description": "Contact's email",
             "type": "string",
-            "example": "rudolf@mail.com"
+            "example": "buhaichuk@mail.com"
           },
           "isFavorite": {
             "description": "Favorite contact",
@@ -583,12 +583,7 @@
           "userId": {
             "description": "Contact's parent id",
             "type": "string",
-            "example": "66fe6d0b5b7ffb5c70dfd498"
-          },
-          "photo": {
-            "description": "Link to contact's photo",
-            "type": "string",
-            "example": "https://res.cloudinary.com/dse2vpdrr/image/upload/v1728016965/fnmbzb5z3gncwwnnbqy9.jpg"
+            "example": "66d1a08277df1f701522be39"
           }
         }
       }
