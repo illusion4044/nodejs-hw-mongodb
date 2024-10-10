@@ -7,7 +7,7 @@ import errorHandler from "./middlewares/errorHandler.js";
 import authRouter from "./routers/auth.js";
 import contactsRouter from "./routers/contacts.js";
 import { UPLOAD_DIR } from "./constants/index.js";
-import { swaggerDocs } from "./middlewares/swaggerDocs.js";
+import { swaggerMiddleware } from "./middlewares/swaggerDocs.js";
 
 export const startServer = ()=> {
     const app = express();
@@ -16,7 +16,7 @@ export const startServer = ()=> {
     app.use(express.json());
     app.use(cookieParser());
 
-    app.use('/api-docs', swaggerDocs); 
+    app.use('/api-docs', swaggerMiddleware); 
 
     app.use("/auth", authRouter);
     app.use("/contacts", contactsRouter);
