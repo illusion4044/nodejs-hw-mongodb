@@ -26,7 +26,7 @@ requestBody:
           email:
             description: "Contact's email"
             type: string
-            example: buhaichuk@mail.com
+            example: rudolf@mail.com
           isFavorite:
             description: 'Favorite contact'
             type: boolean
@@ -37,9 +37,9 @@ requestBody:
             enum: ['work', 'home', 'personal']
             example: 'work'
           userId:
-            description: "Contact's  id"
+            description: "Contact's parent id"
             type: string
-            example: 65e4decdd286b30065d54af9
+            example: 66fe6d0b5b7ffb5c70dfd498
           photo:
             description: "Link to contact's photo"
             type: string
@@ -64,6 +64,6 @@ responses:
               example: Successfully created a contact!
             data:
               type: object
-              $ref: ..\components\schemas\contact.yaml
+              $ref: '../components/schemas/contact.yaml'
   '401':
-    $ref: ..\components\responses\401.yaml
+    $ref: '../components/responses/401.yaml'
