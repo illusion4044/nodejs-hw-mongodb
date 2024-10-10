@@ -12,9 +12,6 @@
   "servers": [
     {
       "url": "http://localhost:3000"
-    },
-    {
-      "url": "https://example.com/api/v1"
     }
   ],
   "tags": [
@@ -33,9 +30,9 @@
         "tags": [
           "Contacts"
         ],
-        "summary": "Get list of contacts",
-        "operationId": "getContacts",
-        "description": "Get list of contacts",
+        "summary": "Get contact by id",
+        "operationId": "getContact",
+        "description": "Get contact by id",
         "security": [
           {
             "bearerAuth": []
@@ -47,59 +44,14 @@
             "name": "contactId",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "description": "ID of the contact"
-          },
-          {
-            "in": "query",
-            "name": "page",
-            "schema": {
-              "type": "integer"
-            },
-            "example": 1
-          },
-          {
-            "in": "query",
-            "name": "perPage",
-            "schema": {
-              "type": "integer",
-              "example": 10
-            }
-          },
-          {
-            "in": "query",
-            "name": "sortBy",
-            "schema": {
               "type": "string",
-              "example": "name"
-            },
-            "description": "All contact's fields can be mentioned. Default value - _id"
-          },
-          {
-            "in": "query",
-            "name": "sortOrder",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "example": "asc"
-            }
-          },
-          {
-            "in": "query",
-            "name": "contactType",
-            "schema": {
-              "type": "string",
-              "example": "home"
+              "example": "66fe6dcb5b7ffb5c70dfd4a0"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Successfully found contacts!",
+            "description": "Get contact by id",
             "content": {
               "application/json": {
                 "schema": {
@@ -116,51 +68,11 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully found contacts!"
+                      "example": "Successfully found student with id 65ca67e7ae7f10c88b598384!"
                     },
                     "data": {
                       "type": "object",
-                      "required": [
-                        "contacts",
-                        "page",
-                        "perPage",
-                        "totalItems",
-                        "totalPages",
-                        "hasNextPage",
-                        "hasPreviousPage"
-                      ],
-                      "properties": {
-                        "contacts": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/contact"
-                          }
-                        },
-                        "page": {
-                          "type": "number",
-                          "example": 2
-                        },
-                        "perPage": {
-                          "type": "number",
-                          "example": 4
-                        },
-                        "totalItems": {
-                          "type": "number",
-                          "example": 4
-                        },
-                        "totalPages": {
-                          "type": "number",
-                          "example": 4
-                        },
-                        "hasNextPage": {
-                          "type": "boolean",
-                          "example": false
-                        },
-                        "hasPreviousPage": {
-                          "type": "boolean",
-                          "example": true
-                        }
-                      }
+                      "$ref": "#/components/schemas/contact"
                     }
                   }
                 }
@@ -191,7 +103,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65e4decdd286b30065d54af9"
+              "example": "66fe6dcb5b7ffb5c70dfd4a0"
             }
           }
         ],
@@ -272,7 +184,7 @@
                   "_id": {
                     "description": "Contact's id",
                     "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
+                    "example": "66f95602862f79450d733026"
                   },
                   "name": {
                     "description": "Contact's name",
@@ -287,7 +199,7 @@
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
-                    "example": "buhaichuk@mail.com"
+                    "example": "rudolf@mail.com"
                   },
                   "isFavorite": {
                     "description": "Favorite contact",
@@ -299,6 +211,7 @@
                     "type": "string",
                     "enum": [
                       "work",
+                      "home",
                       "personal"
                     ],
                     "example": "work"
@@ -306,7 +219,7 @@
                   "userId": {
                     "description": "Contact's parent id",
                     "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
+                    "example": "66fe6d0b5b7ffb5c70dfd498"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
@@ -411,7 +324,7 @@
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
-                    "example": "buhaichuk@mail.com"
+                    "example": "rudolf@mail.com"
                   },
                   "isFavorite": {
                     "description": "Favorite contact",
@@ -429,9 +342,9 @@
                     "example": "work"
                   },
                   "userId": {
-                    "description": "Contact's  id",
+                    "description": "Contact's parent id",
                     "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
+                    "example": "66fe6d0b5b7ffb5c70dfd498"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
@@ -483,7 +396,7 @@
           "Contacts"
         ],
         "summary": "Get list of contacts",
-        "operationId": "getContact",
+        "operationId": "getContacts",
         "description": "Get list of contacts with this endpoint",
         "security": [
           {
@@ -635,7 +548,7 @@
           "_id": {
             "description": "Contact's id",
             "type": "string",
-            "example": "65e4decdd286b30065d54af9"
+            "example": "66f95602862f79450d733026"
           },
           "name": {
             "description": "Contact's name",
@@ -650,7 +563,7 @@
           "email": {
             "description": "Contact's email",
             "type": "string",
-            "example": "buhaichuk@mail.com"
+            "example": "rudolf@mail.com"
           },
           "isFavorite": {
             "description": "Favorite contact",
@@ -668,9 +581,14 @@
             "example": "work"
           },
           "userId": {
-            "description": "Contact's id",
+            "description": "Contact's parent id",
             "type": "string",
-            "example": "65e4decdd286b30065d54af9"
+            "example": "66fe6d0b5b7ffb5c70dfd498"
+          },
+          "photo": {
+            "description": "Link to contact's photo",
+            "type": "string",
+            "example": "https://res.cloudinary.com/dse2vpdrr/image/upload/v1728016965/fnmbzb5z3gncwwnnbqy9.jpg"
           }
         }
       }

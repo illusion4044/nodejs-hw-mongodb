@@ -11,7 +11,7 @@ parameters:
     required: true
     schema:
       type: string
-      example: '66fe6dcb5b7ffb5c70dfd4a0'
+      example: '66d1a08277df1f701522be35'
 requestBody:
   content:
     multipart/form-data:
@@ -21,7 +21,7 @@ requestBody:
           _id:
             description: "Contact's id"
             type: string
-            example: 65e4decdd286b30065d54af9
+            example: 66d1a08277df1f701522be38
           name:
             description: "Contact's name"
             type: string
@@ -41,12 +41,12 @@ requestBody:
           contactType:
             description: 'Which group contact belongs to'
             type: string
-            enum: ['work', 'personal']
+            enum: ['work', 'home', 'personal']
             example: 'work'
           userId:
             description: "Contact's parent id"
             type: string
-            example: 65e4decdd286b30065d54af9
+            example: 66e44f1689959db712a689b6
           photo:
             description: "Link to contact's photo"
             type: string
@@ -71,9 +71,9 @@ responses:
               example: Successfully patched a contact!
             data:
               type: object
-              $ref: ..\..\components\schemas\contact.yaml
+              $ref: '../../components/schemas/contact.yaml'
   '401':
-    $ref: ..\..\components\responses\401.yaml
+    $ref: '../../components/responses/401.yaml'
   '404':
     description: 'Contact not found'
     content:
